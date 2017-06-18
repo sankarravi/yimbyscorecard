@@ -136,7 +136,7 @@
     }
 
     function fetchPoliticianMetadata() {
-      return window.fetch("politicians.json", { cache: "reload" })
+      return window.fetch("./data/politicians.json", { cache: "reload" })
         .then(function(response) { return response.json() })
         .then(function(json) { globals.politiciansLookup = json });
     }

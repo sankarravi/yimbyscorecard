@@ -43,7 +43,7 @@ for zipCode in zipCodes:
         politicians.add((divisionId, office['name'], response['officials'][officialIndex]['name']))
 
 
-politicians_file = open('./politicians.csv', 'w+')
+politicians_file = open('../data/politicians.csv', 'w+')
 politicians = sorted(list(politicians), key=lambda tuple: tuple[0])
 
 with open('./politicians.csv', 'wb') as politicians_file:

@@ -4,7 +4,7 @@ import pprint
 
 as_json = {}
 
-with open('../data/politicians.csv', 'rb') as csvfile:
+with open('politicians.csv', 'rb') as csvfile:
   reader = csv.reader(csvfile)
   next(reader, None)
   for row in reader:
@@ -18,5 +18,5 @@ with open('../data/politicians.csv', 'rb') as csvfile:
     # we'll be looking people up by name, since we don't have any real IDs
     as_json[name] = entry
 
-with open('../data/politicians.json', 'w') as outfile:
+with open('politicians.json', 'w') as outfile:
   json.dump(as_json, outfile)
