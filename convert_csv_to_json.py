@@ -19,4 +19,4 @@ with open('politicians.csv', 'rb') as csvfile:
     as_json[name] = entry
 
 with open('politicians.json', 'w') as outfile:
-  json.dump(as_json, outfile, indent=4)
+  json.dump(as_json, outfile)

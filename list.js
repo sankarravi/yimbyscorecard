@@ -35,7 +35,14 @@
           key: 'AIzaSyCu5mDa-j8751oDEp-pVnj8zjZKnA4A4T0'
         }
       });
-      req.execute(callback);
+
+      if (!globals.politiciansLookup) {
+        fetchPoliticianMetadata().then(function() {
+          req.execute(callback);
+        });
+      } else {
+        req.execute(callback);
+      }
     }
 
     /**
@@ -118,10 +125,6 @@
 
       var source = $("#row-template").html();
       globals.rowTemplate = Handlebars.compile(source);
-
-      window.fetch("politicians.json")
-        .then(function(response) { return response.json() })
-        .then(function(json) { globals.politiciansLookup = json });
     }
     globals.load = load;
 
@@ -130,6 +133,12 @@
         document.getElementById("addressInput").value,
         renderResults
       );
+    }
+
+    function fetchPoliticianMetadata() {
+      return window.fetch("politicians.json", { cache: "reload" })
+        .then(function(response) { return response.json() })
+        .then(function(json) { globals.politiciansLookup = json });
     }
 
 
