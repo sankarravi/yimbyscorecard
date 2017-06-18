@@ -9,9 +9,8 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-
   </head>
-  <body>
+  <body onload='scorecard.load()'>
 
 
     <nav class="navbar navbar-toggleable-md navbar-light bg-faded"  style="padding-bottom:0px; margin-bottom:0px;">
@@ -26,12 +25,12 @@
 
         <form>
           <div class="form-inline form-group row">
-            <label for="lgFormGroupInput" class="col-sm-4 col-form-label col-form-label-lg">Your Addr</label>
+            <label for="addressInput" class="col-sm-4 col-form-label col-form-label-lg">Your Addr</label>
             <div class="col-sm-6">
-              <input type="email" class="form-control" id="lgFormGroupInput" placeholder="" size="15">
+              <input type="text" class="form-control" id="addressInput" placeholder="" size="15">
             </div>
             <div class="col-sm-2">
-              <a class="btn btn-primary pull-right" href="#" role="button" onClick="window.location='./list.html';">Find</a>
+              <a class="btn btn-primary pull-right" href="#" role="button" onClick="scorecard.lookup()">Find</a>
             </div>
           </div>
         </form>
@@ -47,86 +46,76 @@
     </div>
 
     <div id="accordion" role="tablist" aria-multiselectable="true"> <!-- START accordian -->
-
-        <div class="row">
-          <div class="col-2"></div>
-          <div class="col-2">
-            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Jane Kim</a>
-          </div>
-          <div class="col-4">
-           San Francisco Supervisor, District 6 
-          </div>
-          <div class="col-2">
-            <span class="badge badge-default badge-pill">D-</span>
-            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Score Card</a>
-          </div>
-          <div class="col-2"></div>
-        </div>
-
-        <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne">
-          <div class="card"  style="border:none; box-shadow:none;">
-            <div class="card-block">
-
-              <div class="row" style="padding:10px">
-                <div class="col-2"></div>
-
-                <div class="col-8">
-                  
-                  <div class="card">
-                    <div class="card-header">
-                      <div class="row">
-                        <div class="col-8"><h4>Jane Kim</h4></div>
-                        <div class="col-4" style="text-align:right;"><h4>D-</h4></div>
-                      </div>
-                    </div>
-                   
-                    <div class="card-block">
-                      <p class="card-text">
-                        <img style="width:150px; padding: 0px 15px 0px 0px" align="left" src="./prototype/profiles/images/SupervisorJaneKim.png" alt="Card image cap">
-                        Some quick example text to build on the card title and make up the bulk of the card's content.
-                      </p>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                      <li class="list-group-item">Cras justo odio</li>
-                      <li class="list-group-item">Dapibus ac facilisis in</li>
-                      <li class="list-group-item">Vestibulum at eros</li>
-                    </ul>
-                    <div class="card-block">
-                      <a href="#" class="card-link">Card link</a>
-                      <a href="#" class="card-link">Another link</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-2"></div>
-              </div>
-
-            </div>
-          </div>
-
-        </div> <!-- END collapse card -->
-
-        <div class="row">
-          <div class="col-2"></div>
-          <div class="col-2">
-            <a href="profiles/Scott-Weiner.html">Scott Weiner</a>
-          </div>
-          <div class="col-4">
-            California Assemblyman
-          </div>
-          <div class="col-2">
-            <span class="badge badge-default badge-pill">A+</span>
-            <a href="profiles/Scott-Weiner.html">Score Card</a>
-          </div>
-          <div class="col-2"></div>
-        </div>
-
     </div> <!-- END accordian -->
 
-
-
-    <!-- jQuery first, then Tether, then Bootstrap JS. -->
+    
+    <!-- jQuery first, then Tether, then Bootstrap JS, then Handlebars -->
     <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.js"></script>
+    <script src="http://apis.google.com/js/client.js"></script>
+
+    <script src="./list.js"></script>
+
+    <script id="row-template" type="text/x-handlebars-template">
+      <div class="row">
+        <div class="col-2"></div>
+        <div class="col-2">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{index}}" aria-expanded="true" aria-controls="collapse{{index}}">{{officialName}}</a>
+        </div>
+        <div class="col-4">
+         {{officialTitle}}
+        </div>
+        <div class="col-2">
+          <span class="badge badge-default badge-pill">{{officialScore}}</span>
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{index}}" aria-expanded="true" aria-controls="collapse{{index}}">
+            {{#if officialScore}}
+              Score Card
+            {{else}}
+              Details
+            {{/if}}
+          </a>
+        </div>
+        <div class="col-2"></div>
+      </div>
+
+      <div id="collapse{{index}}" class="collapse" role="tabpanel" aria-labelledby="headingOne">
+        <div class="card"  style="border:none; box-shadow:none;">
+          <div class="card-block">
+
+            <div class="row" style="padding:10px">
+              <div class="col-2"></div>
+
+              <div class="col-8">
+                
+                <div class="card">
+                  <div class="card-header">
+                    <div class="row">
+                      <div class="col-8"><h4>{{officialName}}</h4></div>
+                      <div class="col-4" style="text-align:right;"><h4>{{officialScore}}</h4></div>
+                    </div>
+                  </div>
+                 
+                  <div class="card-block">
+                    <p class="card-text">
+                      <img style="width:150px; padding: 0px 15px 0px 0px" align="left" src="{{photoUrl}}" alt="Card image cap">
+                      {{content}}
+                    </p>
+                  </div>
+                  {{#if url}}
+                    <div class="card-block">
+                      <a href="{{url}}" class="card-link">{{url}}</a>
+                    </div>
+                  {{/if}}
+                </div>
+              </div>
+              <div class="col-2"></div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </script>
   </body>
 </html>
