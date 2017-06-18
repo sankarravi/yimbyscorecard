@@ -110,32 +110,30 @@
                       <p>{{notes}}</p>
                     </p>
                   </div>
+                  <div class="card-block row">
+                    <p>Contact:</p>
+                    {{#each emails as |email emailId|}}
+                      <div class="card-block-item col">
+                        <a href="mailto:{{email}}">{{email}}</a>
+                      </div>
+                    {{/each}}
+                    {{#each phones as |phone phoneId|}}
+                      <div class="card-block-item col">
+                        <a href="tel:{{phone}}" class="card-link">{{phone}}</a>
+                      </div>
+                    {{/each}}
+                    {{#if twitter}}
+                      <div class="card-block-item col">
+                        <a href="https://twitter.com/{{twitter}}" target="_blank" class="card-link">@{{twitter}}</a>
+                      </div>
+                    {{/if}}
+                  </div>
                   {{#if url}}
                     <div class="card-block">
                       <a href="{{url}}" target="_blank" class="card-link">{{url}}</a>
                     </div>
                   {{/if}}
-                  {{#if emails}}
-                    <div class="card-block">
-                    {{#each emails as |email emailId|}}
-                      <span class="card-block-item"><a href="mailto:{{email}}">{{email}}</a></span>
-                    {{/each}}
-                    </div>
-                  {{/if}}
-                  {{#if phones}}
-                    <div class="card-block">
-                    {{#each phones as |phone phoneId|}}
-                      <span class="card-block-item"><a href="tel:{{phone}}" class="card-link">{{phone}}</a></span>
-                    {{/each}}
-                    </div>
-                  {{/if}}
-                  {{#if twitter}}
-                    <div class="card-block">
-                      <a href="https://twitter.com/{{twitter}}" target="_blank" class="card-link">@{{twitter}}</a>
-                    </div>
-                  {{/if}}
                 </div>
-              </div>
               <div class="col-2"></div>
             </div>
 
