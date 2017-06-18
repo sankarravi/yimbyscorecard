@@ -19,13 +19,13 @@
       <p class="lead" style="text-align:center;">
 
         <div class="container">
-          <form id="addrForm">
+          <form id="addrForm" onSubmit="submitAddress">
             <div class="form-group row">
               <div class="col">
                 <input type="text" id="addressInput" class="form-control form-control-lg" id="lgFormGroupInput" placeholder="12 Yimby St, San Francisco, CA">
               </div>
               <div>
-                <button type="submit" class="btn btn-primary btn-lg pull-right" onclick="submitAddress();">Find</button>
+                <button type="submit" class="btn btn-primary btn-lg pull-right">Find</button>
               </div>
             </div>
           </form>
@@ -40,23 +40,14 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 
     <script>
-    $( document ).ready(function() {
-      $(document).keypress(function(e) {
-          if(e.which == 13) {
-            submitAddress();
-            return false;
-          }
+      $(document).ready(function () {
+        $('#addrForm').submit(function(evt) {
+          evt.preventDefault();
+          var addrLocation = './list#' + encodeURIComponent($('#addressInput').val());
+          window.location = addrLocation;
+          return false;
+        })
       });
-
-    });
-
-
-    function submitAddress () {
-        var addrLocation = './list#' + encodeURIComponent($('#addressInput').val());
-        window.location = addrLocation;
-        return false;
-    }
-
     </script>
 
   </body>
