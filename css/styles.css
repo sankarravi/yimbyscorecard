@@ -9,5 +9,9 @@ body {
   margin-bottom: 10px; /* Added */
 }
 
+.card-block-item {
+  margin-right: 10px;
+}
+
 
 

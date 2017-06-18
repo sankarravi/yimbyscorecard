@@ -22,27 +22,30 @@
             <a class="nav-link" href="#"></a>
           </li>
         </ul>
-
-        <form onsubmit="globals.lookup()">
-          <div class="form-inline form-group row">
-            <label for="addressInput" class="col-sm-4 col-form-label col-form-label-lg">Your Addr</label>
-            <div class="col-sm-6">
-              <input type="text" class="form-control" id="addressInput" placeholder="" size="15">
-            </div>
-            <div class="col-sm-2">
-              <button type="submit" class="btn btn-primary pull-right">Find</button>
-            </div>
-          </div>
-        </form>
       </div>
     </nav>
 
     <div class="container" style="padding-top:20px;">
-        <div class="row">
-          <div class="col-2"></div>
-          <div class="col" style="padding:20px;"><h2>Politicians in your zip code.</h2>What is their YIMBY SCORE?</div>
-          <div class="col-2"></div>
+      <div class="row">
+        <div class="col-2"></div>
+        <div class="col" style="padding:20px;">
+          <form id="address-form">
+            <div class="form-inline form-group row">
+              <div class="col-sm-6">
+                <input type="text" class="form-control" id="addressInput" placeholder="Your address" style="width: 100%">
+              </div>
+              <div class="col-sm-2">
+                <button type="submit" class="btn btn-primary pull-right">Find</button>
+              </div>
+            </div>
+          </form>
         </div>
+      </div>
+      <div class="row">
+        <div class="col-2"></div>
+        <div class="col" style="padding:20px;"><h2>Politicians representing you</h2>What is their YIMBY SCORE and contact info?</div>
+        <div class="col-2"></div>
+      </div>
     </div>
 
     <div id="accordion" role="tablist" aria-multiselectable="true"> <!-- START accordian -->
@@ -54,22 +57,23 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.js"></script>
-    <script src="http://apis.google.com/js/client.js"></script>
+    <script src="https://apis.google.com/js/client.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ramda/0.24.1/ramda.min.js"></script>
 
     <script src="./list.js"></script>
 
     <script id="row-template" type="text/x-handlebars-template">
-      <div class="row">
+      <div class="row" style="margin-bottom: 5px">
         <div class="col-2"></div>
         <div class="col-2">
-          <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{index}}" aria-expanded="true" aria-controls="collapse{{index}}">{{officialName}}</a>
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{index}}" aria-expanded="{{defaultExpand}}" aria-controls="collapse{{index}}">{{officialName}}</a>
         </div>
         <div class="col-4">
          {{officialTitle}}
         </div>
         <div class="col-2">
           <span class="badge badge-default badge-pill">{{officialScore}}</span>
-          <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{index}}" aria-expanded="true" aria-controls="collapse{{index}}">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{index}}" aria-expanded="{{defaultExpand}}" aria-controls="collapse{{index}}">
             {{#if officialScore}}
               Score Card
             {{else}}
@@ -80,7 +84,7 @@
         <div class="col-2"></div>
       </div>
 
-      <div id="collapse{{index}}" class="collapse" role="tabpanel" aria-labelledby="headingOne">
+      <div id="collapse{{index}}" class="collapse {{#if defaultExpand}}show{{/if}}" role="tabpanel" aria-labelledby="headingOne">
         <div class="card"  style="border:none; box-shadow:none;">
           <div class="card-block">
 
@@ -108,7 +112,26 @@
                   </div>
                   {{#if url}}
                     <div class="card-block">
-                      <a href="{{url}}" class="card-link">{{url}}</a>
+                      <a href="{{url}}" target="_blank" class="card-link">{{url}}</a>
+                    </div>
+                  {{/if}}
+                  {{#if emails}}
+                    <div class="card-block">
+                    {{#each emails as |email emailId|}}
+                      <span class="card-block-item"><a href="mailto:{{email}}">{{email}}</a></span>
+                    {{/each}}
+                    </div>
+                  {{/if}}
+                  {{#if phones}}
+                    <div class="card-block">
+                    {{#each phones as |phone phoneId|}}
+                      <span class="card-block-item"><a href="tel:{{phone}}" class="card-link">{{phone}}</a></span>
+                    {{/each}}
+                    </div>
+                  {{/if}}
+                  {{#if twitter}}
+                    <div class="card-block">
+                      <a href="https://twitter.com/{{twitter}}" target="_blank" class="card-link">@{{twitter}}</a>
                     </div>
                   {{/if}}
                 </div>
