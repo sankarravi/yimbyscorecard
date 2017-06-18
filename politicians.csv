@@ -5,13 +5,15 @@ ocd-division/country:us/state:ca,State Superintendent of Public Instruction,Tom 
 ocd-division/country:us/state:ca,State Controller,Betty T. Yee,,,
 ocd-division/country:us/state:ca,Attorney General,Xavier Becerra,,,
 ocd-division/country:us/state:ca,Lieutenant Governor,Gavin Newsom,,,
-ocd-division/country:us/state:ca,Governor,Edmund G. Brown Jr.,,,
+ocd-division/country:us/state:ca,Governor,Edmund G. Brown Jr.,A,"Recently Governor Brown has been much more helpful on housing. He has been using his prower and influence to promote permit streamlining bills. Permit streamlining is important for getting housing built because it reduces the ability of small numbers of immediate neighbors to interfere with new housing. Governor Brown put our bills - AB 678 & SB 167 on his list of must pass bills this legislaive session, which is helping them tremendously.  ",
 ocd-division/country:us/state:ca,United States Senate,Dianne Feinstein,,,
 ocd-division/country:us/state:ca,Secretary of State,Alex Padilla,,,
 ocd-division/country:us/state:ca,United States Senate,Kamala D. Harris,,,
 ocd-division/country:us/state:ca/cd:1,United States House of Representatives CA-01,Doug LaMalfa,,,
 ocd-division/country:us/state:ca/cd:11,United States House of Representatives CA-11,Mark DeSaulnier,,,
-ocd-division/country:us/state:ca/cd:12,United States House of Representatives CA-12,Nancy Pelosi,,,
+ocd-division/country:us/state:ca/cd:12,United States House of Representatives CA-12,Nancy Pelosi,C,"There is only one thing we want out of Pelosi - support for HR 948, Mortgage Interest Deduction reform - and she's not doing it. The Mortgage Interest Deduction is a subsidy for the kind of person who has a mortgage of $500,000 or greater, aka someone in the top 8% of incomes in the US. HR 948 is progressive tax reform that would increse taxes on high income earners & spend the money to house the homeless. It was introduced by the National Low Income Housing Coalition. 
+
+Please feel free to contact Pelosi & ask her to throw her weight behond HR 948. ",
 ocd-division/country:us/state:ca/cd:13,United States House of Representatives CA-13,Barbara Lee,,,
 ocd-division/country:us/state:ca/cd:14,United States House of Representatives CA-14,Jackie Speier,,,
 ocd-division/country:us/state:ca/cd:15,United States House of Representatives CA-15,Eric Swalwell,,,
@@ -432,10 +434,13 @@ ocd-division/country:us/state:ca/county:san_francisco,City Attorney,Dennis J. He
 ocd-division/country:us/state:ca/county:san_francisco,County Clerk,Karen Hong,,,
 ocd-division/country:us/state:ca/county:san_francisco,District Attorney,George Gascon,,,
 ocd-division/country:us/state:ca/county:san_francisco,Treasurer,Jose Cisneros,,,
-ocd-division/country:us/state:ca/county:san_francisco,Mayor,Edwin M. Lee,,,
-ocd-division/country:us/state:ca/county:san_francisco/council_district:1,"Board of Supervisors, District 1",Sandra Lee Fewer,,,
-ocd-division/country:us/state:ca/county:san_francisco/council_district:10,"Board of Supervisors, District 10",Malia Cohen,,,
-ocd-division/country:us/state:ca/county:san_francisco/council_district:11,"Board of Supervisors, District 11",Ahsha Safai,,,
+ocd-division/country:us/state:ca/county:san_francisco,Mayor,Edwin M. Lee,B+,"No matter the personality of the Mayor, the Office of the mayor is typically more YIMBY than not. This is because the Mayor's job is the take care of the whole city. The Mayor is the CEO of the City, and the City's customers are its residents, so the Office of the Mayor is incented to increase the number of residents in the city. 
+
+On actual policies, this mayor has been good, but he could be more agressive. That's why he doesn't have an A. Recently Mayor Lee introduced HOME-SF which is the first ever real upzoning in western San Francisco. This is a mjor pro-housing policy win. On the other hand, the Mayor could have done a lot more to stop Prop C in June 2016, which wound up severely depressing new applications for housing. 
+",
+ocd-division/country:us/state:ca/county:san_francisco/council_district:1,"Board of Supervisors, District 1",Sandra Lee Fewer,,"Fewer just took office in Jaunuary 2017. She hasn't done anything yet for or against housing in particular, but she ran on a pro-neighborhood character, pro-parking platform, which bodes poorly for her performace on the housing issue. ",
+ocd-division/country:us/state:ca/county:san_francisco/council_district:10,"Board of Supervisors, District 10",Malia Cohen,B,,
+ocd-division/country:us/state:ca/county:san_francisco/council_district:11,"Board of Supervisors, District 11",Ahsha Safai,B,Ahsha Safai took office January 2017 and immediately jumped into the housing issue. He worked with Katy to finally pass HOME SF - wrangling ,
 ocd-division/country:us/state:ca/county:san_francisco/council_district:2,"Board of Supervisors, District 2",Mark Farrell,,,
 ocd-division/country:us/state:ca/county:san_francisco/council_district:3,"Board of Supervisors, District 3",Aaron Peskin,,,
 ocd-division/country:us/state:ca/county:san_francisco/council_district:4,"Board of Supervisors, District 4",Katy Tang,,,
@@ -744,7 +749,7 @@ ocd-division/country:us/state:ca/place:oceanside,City Council Member,Ester C. Sa
 ocd-division/country:us/state:ca/place:oceanside,Mayor,Jim Wood,,,
 ocd-division/country:us/state:ca/place:oceanside,City Council Member and Deputy Mayor,Chuck Lowery,,,
 ocd-division/country:us/state:ca/place:oceanside,City Council Member,Jack Feller,,,
-ocd-division/country:us/state:ca/place:palmdale, Mayor,James C. Ledford Jr.,,,
+ocd-division/country:us/state:ca/place:palmdale,Mayor,James C. Ledford Jr.,,,
 ocd-division/country:us/state:ca/place:palmdale,City Council Member 2,Steven D. Hofbauer,,,
 ocd-division/country:us/state:ca/place:palmdale,City Council Member 4,Juan Carillo Ventura,,,
 ocd-division/country:us/state:ca/place:palmdale,City Council Member 1,Austin Michael Bishop,,,
@@ -915,7 +920,7 @@ ocd-division/country:us/state:ca/sldl:80,CA State Assembly District 80,Lorena S.
 ocd-division/country:us/state:ca/sldl:9,CA State Assembly District 9,Jim Cooper,,,
 ocd-division/country:us/state:ca/sldu:1,CA State Senate District 1,Ted Gaines,,,
 ocd-division/country:us/state:ca/sldu:10,CA State Senate District 10,Bob Wieckowski,,,
-ocd-division/country:us/state:ca/sldu:11,CA State Senate District 11,Scott Wiener,A+,"Here's a note for Scott","Call to support SB-35!"
+ocd-division/country:us/state:ca/sldu:11,CA State Senate District 11,Scott Wiener,A+,Here's a note for Scott,Call to support SB-35!
 ocd-division/country:us/state:ca/sldu:12,CA State Senate District 12,Anthony Cannella,,,
 ocd-division/country:us/state:ca/sldu:13,CA State Senate District 13,Jerry Hill,,,
 ocd-division/country:us/state:ca/sldu:14,CA State Senate District 14,Andy Vidak,,,
