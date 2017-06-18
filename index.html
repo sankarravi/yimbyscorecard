@@ -19,14 +19,14 @@
       <p class="lead" style="text-align:center;">
 
         <div class="container">
-          <form>
+          <form id="addrForm">
             <div class="form-group row">
               <label for="lgFormGroupInput" class="col-2 col-form-label col-form-label-lg">&nbsp;</label>
               <div class="col-6">
-                <input type="email" class="form-control form-control-lg" id="lgFormGroupInput" placeholder="12 Yimby St, San Francisco, CA">
+                <input type="text" id="addressInput" class="form-control form-control-lg" id="lgFormGroupInput" placeholder="12 Yimby St, San Francisco, CA">
               </div>
               <div class="col-4">
-                <a class="btn btn-primary btn-lg pull-right" href="#" role="button" onClick="window.location='./list.html';">Find</a>
+                <a class="btn btn-primary btn-lg pull-right" href="#" onclick="submitAddress();" role="button">Find</a>
               </div>
             </div>
           </form>
@@ -39,5 +39,26 @@
     <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
+    <script>
+    $( document ).ready(function() {
+      $(document).keypress(function(e) {
+          if(e.which == 13) {
+            submitAddress();
+            return false;
+          }
+      });
+
+    });
+
+
+    function submitAddress () {
+        var addrLocation='./list.html#' + $('#addressInput').val();
+        window.location=addrLocation;
+        return false;
+    }
+
+    </script>
+
   </body>
 </html>

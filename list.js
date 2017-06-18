@@ -1,13 +1,32 @@
 (function() {
   window.globals = window.globals || {}
+  
+  // all is loaded; jquery is available
+  $( document ).ready(function() {
 
-  /**
-   * Build and execute request to look up voter info for provided address.
-   * @param {string} address Address for which to fetch voter info.
-   * @param {function(Object)} callback Function which takes the
-   *     response object as a parameter.
-   */
-   function mkRequest(address, callback) {
+    /**
+    * Init: Check for presence of the address in the hash
+    */
+    if (window.location.hash) {
+      $("#addressInput").focus();
+
+      setTimeout(function(){
+
+        var urlAddr=window.location.hash;
+        urlAddr = urlAddr.replace('#','');
+      
+        $("#addressInput").val(urlAddr);
+        $('#address-form').submit();
+      }, 250);
+    }
+
+    /**
+    * Build and execute request to look up voter info for provided address.
+    * @param {string} address Address for which to fetch voter info.
+    * @param {function(Object)} callback Function which takes the
+    *     response object as a parameter.
+    */
+    function mkRequest(address, callback) {
       var req = gapi.client.request({
         'path' : '/civicinfo/v2/representatives',
         'params' : {'address' : address}
@@ -110,5 +129,8 @@
         renderResults
       );
     }
+
+
+  });
 
 })()

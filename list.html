@@ -32,7 +32,7 @@
           <form id="address-form">
             <div class="form-inline form-group row">
               <div class="col-sm-6">
-                <input type="text" class="form-control" id="addressInput" placeholder="Your address" style="width: 100%">
+                <input type="text" class="form-control" id="addressInput" style="width: 100%">
               </div>
               <div class="col-sm-2">
                 <button type="submit" class="btn btn-primary pull-right">Find</button>
@@ -114,7 +114,7 @@
                     </p>
                   </div>
                   <div class="card-block row">
-                    <p>Contact:</p>
+                    <div class="col">Contact:</div>
                     {{#each emails as |email emailId|}}
                       <div class="card-block-item col">
                         <a href="mailto:{{email}}">{{email}}</a>
@@ -135,7 +135,8 @@
                     <div class="card-block">
                       <a href="{{url}}" target="_blank" class="card-link">{{url}}</a>
                     </div>
-                  {{/if}}
+                    {{/if}}
+                    
                 </div>
               <div class="col-2"></div>
             </div>
