@@ -107,7 +107,8 @@
       ])(results);
 
       var $rows = results.map(function(result, idx) {
-        return globals.rowTemplate(Object.assign(result, { index: idx }));
+        result.index = idx;
+        return globals.rowTemplate(result);
       });
       $('#accordion').html($rows);
     }
