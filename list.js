@@ -12,11 +12,12 @@
 
       setTimeout(function(){
 
-        var urlAddr=window.location.hash;
-        urlAddr = urlAddr.replace('#','');
+        var urlAddr = window.location.hash;
+        urlAddr = decodeURIComponent(urlAddr.replace('#',''));
       
         $("#addressInput").val(urlAddr);
-        $('#address-form').submit();
+
+        mkRequest(urlAddr, renderResults);
       }, 250);
     }
 
@@ -28,8 +29,11 @@
     */
     function mkRequest(address, callback) {
       var req = gapi.client.request({
-        'path' : '/civicinfo/v2/representatives',
-        'params' : {'address' : address}
+        path: '/civicinfo/v2/representatives',
+        params: {
+          address: address,
+          key: 'AIzaSyCu5mDa-j8751oDEp-pVnj8zjZKnA4A4T0'
+        }
       });
       req.execute(callback);
     }
@@ -74,6 +78,7 @@
           results.push({
             officialTitle: officeName,
             officialName: name,
+            divisionId: office.divisionId,
             url: urls[0],
             emails: emails,
             phones: phones,
@@ -87,15 +92,12 @@
         })
       })
 
-      // put blank entries at the end by pretending their score is Z
-      results = results.sort(function (itemA, itemB) {
-        var a = itemA.officialScore;
-        var b = itemB.officialScore;
-        if (!a) return 1;
-        if (!b) return -1;
-        if (a === b) return 0;
-        return a < b ? -1 : 1;
-      })
+      // Sort most local politicians up top (longer divisionId roughly means more local)
+      // and then sort on politician name
+      results = R.sortWith([
+        R.descend(function(pol) { return pol.divisionId.length }),
+        R.ascend(R.prop('officialName'))
+      ])(results);
 
       var $rows = results.map(function(result, idx) {
         return globals.rowTemplate(Object.assign(result, { index: idx }));

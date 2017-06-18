@@ -25,7 +25,7 @@
                 <input type="text" id="addressInput" class="form-control form-control-lg" id="lgFormGroupInput" placeholder="12 Yimby St, San Francisco, CA">
               </div>
               <div>
-                <a class="btn btn-primary btn-lg pull-right" href="#" onclick="submitAddress();" role="button">Find</a>
+                <button type="submit" class="btn btn-primary btn-lg pull-right" onclick="submitAddress();">Find</button>
               </div>
             </div>
           </form>
@@ -52,8 +52,8 @@
 
 
     function submitAddress () {
-        var addrLocation='./list.html#' + $('#addressInput').val();
-        window.location=addrLocation;
+        var addrLocation = '/list#' + encodeURIComponent($('#addressInput').val());
+        window.location = addrLocation;
         return false;
     }
 
