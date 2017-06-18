@@ -10,7 +10,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
   </head>
-  <body onload='scorecard.load()'>
+  <body onload='globals.load()'>
 
 
     <nav class="navbar navbar-toggleable-md navbar-light bg-faded"  style="padding-bottom:0px; margin-bottom:0px;">
@@ -23,14 +23,14 @@
           </li>
         </ul>
 
-        <form>
+        <form onsubmit="globals.lookup()">
           <div class="form-inline form-group row">
             <label for="addressInput" class="col-sm-4 col-form-label col-form-label-lg">Your Addr</label>
             <div class="col-sm-6">
               <input type="text" class="form-control" id="addressInput" placeholder="" size="15">
             </div>
             <div class="col-sm-2">
-              <a class="btn btn-primary pull-right" href="#" role="button" onClick="scorecard.lookup()">Find</a>
+              <button type="submit" class="btn btn-primary pull-right">Find</button>
             </div>
           </div>
         </form>
@@ -99,8 +99,11 @@
                  
                   <div class="card-block">
                     <p class="card-text">
-                      <img style="width:150px; padding: 0px 15px 0px 0px" align="left" src="{{photoUrl}}" alt="Card image cap">
-                      {{content}}
+                      {{#if photoUrl}}
+                        <img style="width:150px; padding: 0px 15px 0px 0px" align="left" src="{{photoUrl}}" alt="Card image cap">
+                      {{/if}}
+                      <p><b>{{actionNotes}}</b></p>
+                      <p>{{notes}}</p>
                     </p>
                   </div>
                   {{#if url}}

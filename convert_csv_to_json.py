@@ -2,17 +2,21 @@ import json
 import csv
 import pprint
 
-as_json = []
+as_json = {}
 
 with open('politicians.csv', 'rb') as csvfile:
   reader = csv.reader(csvfile)
+  next(reader, None)
   for row in reader:
+    name = row[2]
     entry = {
-      'name': row[2],
+      'name': name,
       'score': row[3],
       'notes': row[4],
+      'actionNotes': row[5],
     }
-    as_json.append(entry)
+    # we'll be looking people up by name, since we don't have any real IDs
+    as_json[name] = entry
 
 with open('politicians.json', 'w') as outfile:
   json.dump(as_json, outfile, indent=4)

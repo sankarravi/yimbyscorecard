@@ -48,6 +48,6 @@ politicians = sorted(list(politicians), key=lambda tuple: tuple[0])
 
 with open('./politicians.csv', 'wb') as politicians_file:
   csvwriter = csv.writer(politicians_file)
-  csvwriter.writerow(["Open Civic Data Division ID","Role","Name","Score (A-F)","Blurb"])
+  csvwriter.writerow(["Open Civic Data Division ID","Role","Name","Score (A-F)","Blurb", "Action Notes"])
   for row in politicians:
     csvwriter.writerow(row)
