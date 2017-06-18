@@ -3,11 +3,15 @@ import requests
 import urllib
 import pprint
 import csv
+import os
 
 API_KEY = "AIzaSyCu5mDa-j8751oDEp-pVnj8zjZKnA4A4T0"
 
-ocdDivisions = [str(d).strip() for d in open('./ocd_divisions.txt').readlines()]
-zipCodes = [int(z) for z in open('./ca_zip_codes.txt').readlines()]
+dir = os.path.dirname(__file__)
+
+input_file = os.path.join(dir, '../data/politicians.csv')
+ocdDivisions = [str(d).strip() for d in open(os.path.join(dir, './ocd_divisions.txt')).readlines()]
+zipCodes = [int(z) for z in open(os.path.join(dir, './ca_zip_codes.txt')).readlines()]
 
 politicians = set()
 
@@ -42,11 +46,9 @@ for zipCode in zipCodes:
       if 'state:ca' in divisionId:
         politicians.add((divisionId, office['name'], response['officials'][officialIndex]['name']))
 
-
-politicians_file = open('../data/politicians.csv', 'w+')
 politicians = sorted(list(politicians), key=lambda tuple: tuple[0])
 
-with open('./politicians.csv', 'wb') as politicians_file:
+with open(os.path.join(dir, '../data/politicians.csv'), 'wb') as politicians_file:
   csvwriter = csv.writer(politicians_file)
   csvwriter.writerow(["Open Civic Data Division ID","Role","Name","Score (A-F)","Blurb", "Action Notes"])
   for row in politicians:
