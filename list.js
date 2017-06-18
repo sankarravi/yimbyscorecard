@@ -31,6 +31,11 @@
         if (office.divisionId.indexOf('state:ca') === -1) {
           return;
         }
+        // Exclude State officials we don't focus on
+        var stateRolesToShow = ['Governor', 'Lieutenant Governor', 'United States Senate']
+        if (office.divisionId === "ocd-division/country:us/state:ca" && stateRolesToShow.indexOf(office.name) === -1) {
+          return;
+        }
 
         var officeName = office.name;
         var officialIndices = office.officialIndices;
