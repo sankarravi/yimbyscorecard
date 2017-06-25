@@ -1,7 +1,6 @@
 import json
 import requests
 import urllib
-import pprint
 import csv
 import os
 
