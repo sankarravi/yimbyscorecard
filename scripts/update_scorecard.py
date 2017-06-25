@@ -1,9 +1,9 @@
 """
-  Mostly copied from https://developers.google.com/sheets/api/quickstart/python
-
   Pulls the latest data from the YIMBY Scorecard Google Sheet
   (https://docs.google.com/spreadsheets/d/1pG5n1P7KdFFCvdTOCpQ3tR0S-Db8dmfN2oOCNfyl27Y)
-  and converts it to JSON that the app can use
+  and converts it to JSON that the app can use.
+
+  Mostly copied from https://developers.google.com/sheets/api/quickstart/python
 """
 from __future__ import print_function
 import httplib2
