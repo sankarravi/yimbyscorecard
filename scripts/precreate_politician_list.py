@@ -1,7 +1,14 @@
+"""
+ This script was used to create the initial politicians.csv
+ file that turned into our Google Spreadsheet at
+ https://docs.google.com/spreadsheets/d/1pG5n1P7KdFFCvdTOCpQ3tR0S-Db8dmfN2oOCNfyl27Y.
+
+ We probably don't need to run it again, but it's here for documentation /
+ in case we need to rerun that process at some point.
+"""
 import json
 import requests
 import urllib
-import pprint
 import csv
 import os
 
