@@ -45,6 +45,8 @@
       }
     }
 
+    var caAssemblyDistrictRe = /state:ca\/sldl:(\d+)/;
+
     /**
      * Render results in the DOM.
      * @param {Object} response Response object returned by the API.
@@ -69,6 +71,11 @@
 
         var officeName = office.name;
         var officialIndices = office.officialIndices;
+
+        var assemblyMatch = office.divisionId.match(caAssemblyDistrictRe);
+        var yimbyMailerLink = (assemblyMatch && assemblyMatch.length === 2)
+          ? 'https://sf-yimby-emailer.appspot.com/asm-district-' + assemblyMatch[1]
+          : undefined;
 
         officialIndices.forEach(function(index) {
           var official = officials[index] ? officials[index] : {};
@@ -95,6 +102,7 @@
             notes: politicianData.notes,
             actionNotes: politicianData.actionNotes,
             defaultExpand: politicianData.actionNotes && politicianData.actionNotes.trim() !== '',
+            yimbyMailerLink: yimbyMailerLink,
           })
         })
       })
