@@ -46,6 +46,8 @@
     }
 
     var caAssemblyDistrictRe = /state:ca\/sldl:(\d+)/;
+    var caSenateDistrictRe = /state:ca\/sldu:(\d+)/;
+    var emailText = "subject=Vote%20Yes%20on%20the%20housing%20bills%20package&body=As%20your%20constituent%20and%20a%20member%20of%20the%20pro-housing%20YIMBY%20movement%2C%20I%20ask%20you%20to%20please%20vote%20in%20favor%20of%20the%20Housing%20Package%20that%20will%20increase%20both%20overall%20housing%20production%20and%20funding%20for%20Affordable%20Housing.%20We%20hope%20this%20package%20will%20include%20bills%20like%20SB%2035%2C%20SB%202%2C%20SB%203%2C%20AB%20678%2FSB167%2C%20and%20any%20other%20bills%20that%20will%20create%20significantly%20more%20housing.%0A%0ACalifornia%20is%20experiencing%20a%20SEVERE%20housing%20shortage%20that%20is%20devastating%20to%20low-income%20people%2C%20stunting%20young%20people%2C%20and%20driving%20Californians%20to%20commute%20long%20distances%20for%20work.%20Every%20city%20needs%20to%20do%20its%20part%20to%20bring%20down%20prices%20by%20building%20more%20housing.%0A%0AWe%20need%20to%20streamline%20housing%20production%20to%20create%20more%20subsidized%20Affordable%20Housing%20and%20make%20market%20rate%20housing%20more%20affordable.%0A%0AThis%20housing%20package%20is%20major%20step%20towards%20addressing%20the%20needs%20of%20low-income%20Californians.%20About%201.7%20million%20low-income%20California%20renters%20spend%20more%20than%20half%20their%20income%20on%20housing.%20We%20need%20policies%20that%20increase%20funding%20for%20low-income%20housing%20projects%20and%20speed%20up%20the%20production%20of%20all%20housing%20NOW.%0A%0APlease%20support%20a%20housing%20package%20that%20takes%20major%20steps%20in%20the%20right%20direction.%0A%0AThank%20you.";
 
     /**
      * Render results in the DOM.
@@ -73,9 +75,16 @@
         var officialIndices = office.officialIndices;
 
         var assemblyMatch = office.divisionId.match(caAssemblyDistrictRe);
-        var yimbyMailerLink = (assemblyMatch && assemblyMatch.length === 2)
-          ? 'https://sf-yimby-emailer.appspot.com/asm-district-' + assemblyMatch[1]
-          : undefined;
+        var senateMatch = office.divisionId.match(caSenateDistrictRe);
+        var yimbyMailerLink = undefined;
+        if (assemblyMatch && assemblyMatch.length === 2) {
+          yimbyMailerLink = 'https://sf-yimby-emailer.appspot.com/asm-district-' + assemblyMatch[1]
+        } else if (senateMatch && senateMatch.length === 2) {
+          yimbyMailerLink = 'https://sf-yimby-emailer.appspot.com/senate-district-' + senateMatch[1]
+        }
+        if (yimbyMailerLink !== undefined) {
+          yimbyMailerLink += '?' + emailText;
+        }
 
         officialIndices.forEach(function(index) {
           var official = officials[index] ? officials[index] : {};
