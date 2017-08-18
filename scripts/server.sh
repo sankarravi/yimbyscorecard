@@ -8,4 +8,4 @@ set -e
 cd "$(dirname "$0")/.."
 
 # boot the app and any other necessary processes.
-bundle exec jekyll serve
+bundle exec jekyll serve --port 5000
