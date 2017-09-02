@@ -1,0 +1,17 @@
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #F2F3F4;
+}
+
+.addressForm {
+  justify-content: center;
+}
+
+.IndexPage {
+  margin-top: 100px;
+}
