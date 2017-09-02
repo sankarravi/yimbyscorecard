@@ -3,5 +3,8 @@
     "react-app",
     "plugin:import/errors",
     "plugin:import/warnings"
-  ]
+  ],
+  "globals": {
+    "gapi": true
+  },
 }

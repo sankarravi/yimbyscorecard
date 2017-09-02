@@ -12,7 +12,7 @@ import registerServiceWorker from './registerServiceWorker';
 
 render(
   <Router>
-    <div className="App container">
+    <div className="App">
       <Route exact path="/" component={IndexPage}/>
       <Route path="/list" component={ListPage}/>
     </div>

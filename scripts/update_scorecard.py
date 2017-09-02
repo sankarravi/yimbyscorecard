@@ -88,7 +88,7 @@ def main():
       as_json[name] = entry
 
   cur_dir = os.path.dirname(__file__)
-  output_file = os.path.join(cur_dir, '../data/politicians.json')
+  output_file = os.path.join(cur_dir, '../src/politicians.json')
   with open(output_file, 'w') as outfile:
     json.dump(as_json, outfile)
 

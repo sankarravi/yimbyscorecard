@@ -1,7 +1,7 @@
 import React from 'react';
-import { withRouter } from 'react-router'
+import queryString from 'query-string';
 
-class IndexPage extends React.Component {
+export default class IndexPage extends React.Component {
   constructor(props) {
     super(props)
 
@@ -12,11 +12,13 @@ class IndexPage extends React.Component {
   }
 
   submitAddress = () => {
-    const address = encodeURIComponent(this.state.address)
-    const zipcode = encodeURIComponent(this.state.zipcode)
+    const qs = queryString.stringify({
+      address: this.state.address,
+      zipcode: this.state.zipcode,
+    })
 
-    const url = `/list?address=${address}&zipcode=${zipcode}`
-    this.props.history.push(url)
+    const url = `/list?${qs}`;
+    this.props.history.push(url);
   }
 
   formIsValid = () => {
@@ -29,7 +31,7 @@ class IndexPage extends React.Component {
 
   render() {
     return (
-      <div className="IndexPage">
+      <div className="IndexPage container">
         <h2 className="display-4 text-center">
           YIMBY Representative Tracker
         </h2>
@@ -51,6 +53,7 @@ class IndexPage extends React.Component {
                 placeholder="Enter your street address"
                 onChange={this.updateField('address')}
                 required={true}
+                value={this.state.address}
               />
             </div>
             <div className="col-2">
@@ -61,6 +64,7 @@ class IndexPage extends React.Component {
                 placeholder="zipcode"
                 onChange={this.updateField('zipcode')}
                 required={true}
+                value={this.state.zipcode}
               />
             </div>
             <div className="col-2">
@@ -78,5 +82,3 @@ class IndexPage extends React.Component {
     )
   }
 }
-
-export default withRouter(IndexPage);
