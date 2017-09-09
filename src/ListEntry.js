@@ -116,7 +116,6 @@ const ListEntryExpandable = props => {
                     {official.photoUrl && (
                       <img
                         style={{ width: '150px', padding: '0px 15px 0px 0px' }}
-                        align="left"
                         src={official.photoUrl}
                         alt={official.name}
                       />
@@ -139,12 +138,12 @@ const ListEntryExpandable = props => {
                 <div className="card-block row">
                   <div className="col-md-12 col-lg">Contact:</div>
                   {emails.map(email => (
-                    <div className="card-block-item col-12 col-md">
+                    <div className="card-block-item col-12 col-md" key={email}>
                       <a href={`mailto:${email}`}>{email}</a>
                     </div>
                   ))}
                   {phones.map(phone => (
-                    <div className="card-block-item col-12 col-md">
+                    <div className="card-block-item col-12 col-md" key={phone}>
                       <a href={`tel:${phone}`} className="card-link">
                         {phone}
                       </a>

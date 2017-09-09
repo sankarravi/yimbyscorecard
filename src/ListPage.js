@@ -22,11 +22,13 @@ export default class ListPage extends React.Component {
   }
 
   componentDidMount() {
-    gapi.client.setApiKey(API_KEY);
+    gapi.load('client', () => {
+      gapi.client.setApiKey(API_KEY);
 
-    if (this.state.address !== '' && this.state.zipcode !== '') {
-      this.fetchResults();
-    }
+      if (this.state.address !== '' && this.state.zipcode !== '') {
+        this.fetchResults();
+      }
+    });
   }
 
   fetchResults = () => {
@@ -107,7 +109,10 @@ export default class ListPage extends React.Component {
             <div className="col" style={{ padding: '20px' }}>
               <form id="addressForm" onSubmit={this.submitAddress}>
                 <div className="form-row addressForm">
-                  <div className="col-ato">
+                  <div
+                    className="col-8 col-sm-2"
+                    style={{ marginBottom: '10px' }}
+                  >
                     <input
                       id="address"
                       className="form-control"
@@ -117,7 +122,7 @@ export default class ListPage extends React.Component {
                       value={this.state.address}
                     />
                   </div>
-                  <div className="col-ato">
+                  <div className="col-4 col-sm-1">
                     <input
                       id="zipcode"
                       className="form-control"
@@ -127,10 +132,10 @@ export default class ListPage extends React.Component {
                       value={this.state.zipcode}
                     />
                   </div>
-                  <div className="col-ato">
+                  <div className="col-12 col-sm-1">
                     <button
                       type="submit"
-                      className="btn btn-primary pull-right"
+                      className="btn btn-outline-primary btn-block"
                     >
                       Search
                     </button>

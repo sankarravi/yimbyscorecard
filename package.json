@@ -1,10 +1,11 @@
 {
   "name": "yimbyscorecard",
+  "homepage": "http://sankarravi.github.io/yimbyscorecard",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "classnames": "^2.2.5",
-    "eslint-plugin-import": "^2.7.0",
+    "gh-pages": "^1.0.0",
     "query-string": "^5.0.0",
     "ramda": "^0.24.1",
     "react": "^15.6.1",
@@ -16,10 +17,12 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build && react-snapshot",
+    "prettier": "prettier --single-quote --trailing-comma es5 --write 'src/*.js'",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
   "devDependencies": {
+    "eslint-plugin-import": "^2.7.0",
     "prettier": "^1.6.1"
   }
 }

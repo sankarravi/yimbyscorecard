@@ -38,7 +38,7 @@ export default class IndexPage extends React.Component {
 
         <form id="addressForm" onSubmit={this.submitAddress}>
           <div className="form-row addressForm">
-            <div className="col-4">
+            <div className="col-sm-4">
               <input
                 id="address"
                 className="form-control form-control-lg"
@@ -49,7 +49,7 @@ export default class IndexPage extends React.Component {
                 value={this.state.address}
               />
             </div>
-            <div className="col-2">
+            <div className="col-sm-2">
               <input
                 id="zipcode"
                 className="form-control form-control-lg"
@@ -60,10 +60,10 @@ export default class IndexPage extends React.Component {
                 value={this.state.zipcode}
               />
             </div>
-            <div className="col-2">
+            <div className="col-sm-2">
               <button
                 type="submit"
-                className="btn btn-primary btn-lg pull-right"
+                className="btn btn-primary btn-lg btn-block"
                 disabled={!this.formIsValid()}
               >
                 Search
