@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "classnames": "^2.2.5",
     "eslint-plugin-import": "^2.7.0",
     "query-string": "^5.0.0",
     "ramda": "^0.24.1",
@@ -17,5 +18,8 @@
     "build": "react-scripts build && react-snapshot",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "prettier": "^1.6.1"
   }
 }

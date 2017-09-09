@@ -1,8 +1,9 @@
 import React from 'react';
 import queryString from 'query-string';
+import { flatten, find, propEq } from 'ramda';
 
 import ListEntry from './ListEntry';
-import politiciansLookup from './politicians.json';
+import politiciansExtraData from './politicians.json';
 
 
 const gapi = window.gapi;
@@ -47,6 +48,32 @@ export default class ListPage extends React.Component {
         results: response || {},
       })
     });
+  }
+
+  renderPoliticianResults() {
+    if (this.state.results.offices && this.state.results.offices.length > 0) {
+      const officeOfficialPairs = []
+      this.state.results.offices.forEach(office => {
+        office.officialIndices.forEach(officialIndex => {
+          officeOfficialPairs.push({
+            office: office,
+            official: this.state.results.officials[officialIndex],
+          })
+        })
+      })
+
+      officeOfficialPairs.map((pair, index) =>
+        <ListEntry
+          key={index}
+          office={pair.office}
+          official={pair.official}
+          politicianExtraData={politiciansExtraData[pair.official.name]}
+          index={index}
+        />
+      )
+    } else {
+      return null
+    }
   }
 
   render() {
@@ -99,16 +126,7 @@ export default class ListPage extends React.Component {
           </div>
 
           <div id="accordion" role="tablist" aria-multiselectable="true">
-            {this.state.results.offices && this.state.results.offices.length > 0 &&
-              this.state.results.offices.map((office, index) =>
-                <ListEntry
-                  key={index}
-                  office={office}
-                  officials={this.state.results.officials}
-                  index={index}
-                />
-              )
-            }
+            {this.renderPoliticianResults(this.state.results)}
           </div>
         </div>
 
