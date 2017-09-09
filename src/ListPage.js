@@ -47,30 +47,50 @@ export default class ListPage extends React.Component {
     });
   };
 
+  getRelevantOffices = () => {
+    const relevantStateRoles = [
+      'Governor',
+      'Lieutenant Governor',
+      'United States Senate',
+    ];
+    const allOffices = this.state.results.offices || [];
+
+    // Goals:
+    // 1. Exclude the President, VP, National Senate, etc.
+    // 2. Exclude state-level officials like Treasurers that we won't be lobbying (in CA)
+    return allOffices.filter(office => {
+      const isNationalOffice = office.divisionId.indexOf('state:') === -1;
+      const isIgnorableStateOffice =
+        office.divisionId === 'ocd-division/country:us/state:ca' &&
+        relevantStateRoles.indexOf(office.name) === -1;
+
+      return !isNationalOffice && !isIgnorableStateOffice;
+    });
+  };
+
   renderPoliticianResults() {
-    if (this.state.results.offices && this.state.results.offices.length > 0) {
-      const officeOfficialPairs = [];
-      this.state.results.offices.forEach(office => {
-        office.officialIndices.forEach(officialIndex => {
-          officeOfficialPairs.push({
-            office: office,
-            official: this.state.results.officials[officialIndex],
-          });
+    const officeOfficialPairs = [];
+    // 1. Filter the list of offices down to ones we actually want to display
+    // 2. Figure out the officials associated with those offices, so we have
+    //    a list of (office, official) groups that we can render
+    this.getRelevantOffices().forEach(office => {
+      office.officialIndices.forEach(officialIndex => {
+        officeOfficialPairs.push({
+          office: office,
+          official: this.state.results.officials[officialIndex],
         });
       });
+    });
 
-      officeOfficialPairs.map((pair, index) => (
-        <ListEntry
-          key={index}
-          office={pair.office}
-          official={pair.official}
-          politicianExtraData={politiciansExtraData[pair.official.name]}
-          index={index}
-        />
-      ));
-    } else {
-      return null;
-    }
+    return officeOfficialPairs.map((pair, index) => (
+      <ListEntry
+        key={index}
+        office={pair.office}
+        official={pair.official}
+        politicianExtraData={politiciansExtraData[pair.official.name]}
+        index={index}
+      />
+    ));
   }
 
   render() {

@@ -28,7 +28,7 @@ const getYimbyMailerLink = divisionId => {
 };
 
 const ListEntryHeader = props => {
-  const { index, office, official, politicianExtraData } = this.props;
+  const { index, office, official, politicianExtraData } = props;
 
   const { actionNotes } = politicianExtraData;
   const defaultExpand = actionNotes && actionNotes.trim() !== '';
@@ -70,7 +70,7 @@ const ListEntryHeader = props => {
 };
 
 const ListEntryExpandable = props => {
-  const { index, office, official, politicianExtraData } = this.props;
+  const { index, office, official, politicianExtraData } = props;
 
   const { actionNotes, score } = politicianExtraData;
   const defaultExpand = actionNotes && actionNotes.trim() !== '';
