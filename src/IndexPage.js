@@ -3,47 +3,40 @@ import queryString from 'query-string';
 
 export default class IndexPage extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
       address: '',
       zipcode: '',
-    }
+    };
   }
 
   submitAddress = () => {
     const qs = queryString.stringify({
       address: this.state.address,
       zipcode: this.state.zipcode,
-    })
+    });
 
     const url = `/list?${qs}`;
     this.props.history.push(url);
-  }
+  };
 
   formIsValid = () => {
-    return this.state.address !== '' && this.state.zipcode !== ''
-  }
+    return this.state.address !== '' && this.state.zipcode !== '';
+  };
 
-  updateField = (fieldName) => (e) => {
-    this.setState({ [fieldName]: e.target.value })
-  }
+  updateField = fieldName => e => {
+    this.setState({ [fieldName]: e.target.value });
+  };
 
   render() {
     return (
       <div className="IndexPage container">
-        <h2 className="display-4 text-center">
-          YIMBY Representative Tracker
-        </h2>
-        <p className="lead text-center">
-          Find your reps and take action!
-        </p>
+        <h2 className="display-4 text-center">YIMBY Representative Tracker</h2>
+        <p className="lead text-center">Find your reps and take action!</p>
         <hr className="my-4" />
 
-        <form
-          id="addressForm"
-          onSubmit={this.submitAddress}
-        >
+        <form id="addressForm" onSubmit={this.submitAddress}>
           <div className="form-row addressForm">
             <div className="col-4">
               <input
@@ -79,6 +72,6 @@ export default class IndexPage extends React.Component {
           </div>
         </form>
       </div>
-    )
+    );
   }
 }
