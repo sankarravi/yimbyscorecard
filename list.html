@@ -107,10 +107,13 @@
                       {{#if photoUrl}}
                         <img style="width:150px; padding: 0px 15px 0px 0px" align="left" src="{{photoUrl}}" alt="Card image cap">
                       {{/if}}
+
+                      {{#if actionNotes}}
                       <p>
                         <h5>Action Alert!</h5>
                         <b>{{actionNotes}}</b>
                       </p>
+                      {{/if}}
                       {{#if yimbyMailerLink}}
                         <a class="btn btn-primary" target="_blank" href="{{yimbyMailerLink}}">
                           YIMBY Mailer
